@@ -110,4 +110,12 @@ describe User do
       its(:remember_token) { should_not be_blank }
     end
   end
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
 end
